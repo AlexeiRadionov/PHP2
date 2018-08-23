@@ -27,10 +27,10 @@
 
 		public function buy() {
 			$price = $this -> price - $this -> price/100 * $this -> discount;
-			return "Телевизор " . $this -> brand . " производства " . $this -> production . " продаётся со скидкой " . $this -> discount . " %. Цена со скидкой: {$price} рублей";
+			return "Телевизор " . $this -> getBrand() . " производства " . $this -> getProduction() . " продаётся со скидкой " . $this -> discount . " %. Цена со скидкой: {$price} рублей";
 		}
 	}
 
-	$tv = new Television("Samsung", "Корея", "SM-32-1264", 1200, 10);
+	$tv = new Television("Samsung", "Корея", "SM-32-1264", 12000, 10);
 	echo $tv -> buy();
 ?>

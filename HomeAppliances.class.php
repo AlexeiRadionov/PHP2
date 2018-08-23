@@ -1,7 +1,7 @@
 <?php
 	class HomeAppliances {
-		protected $brand;
-		protected $production;
+		private $brand;
+		private $production;
 
 
 		public function getBrand() {

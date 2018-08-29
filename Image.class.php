@@ -3,7 +3,7 @@
 		private $id;
 
 		public function getId() {
-			$this -> id;
+			return $this -> id;
 		}
 
 		public function setter($id) {
@@ -15,7 +15,7 @@
 		}
 
 		public function getImagesContent($id){
-		    $sql = "SELECT `path_img`, `count_preview` FROM `images` WHERE id = " . $id;
+		    $sql = "SELECT `path_img` FROM `images` WHERE id = " . $id;
 		    $images = $this -> getAssocResult($sql);
 
 			//В случае если изображения нет, вернем пустое значение

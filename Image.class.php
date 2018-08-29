@@ -14,8 +14,8 @@
 			$this -> setter($id);
 		}
 
-		public function getImagesContent($id){
-		    $sql = "SELECT `path_img` FROM `images` WHERE id = " . $id;
+		public function getImages(){
+		    $sql = "SELECT `path_img` FROM `images` WHERE id = " . $this -> id;
 		    $images = $this -> getAssocResult($sql);
 
 			//В случае если изображения нет, вернем пустое значение
@@ -26,11 +26,11 @@
 		    return $result;
 		}
 
-		public function countPreview($id) {
-		    $sql = "UPDATE `images` SET `count_preview` = `count_preview` + 1 WHERE id = " . $id;
+		public function countPreview() {
+		    $sql = "UPDATE `images` SET `count_preview` = `count_preview` + 1 WHERE id = " . $this -> id;
 		    $this -> executeQuery($sql);
 		    
-		    $sql = "SELECT `count_preview` FROM `images` WHERE id = " . $id;
+		    $sql = "SELECT `count_preview` FROM `images` WHERE id = " . $this -> id;
 		    $count = $this -> getAssocResult($sql);
 		    
 		    return $count[0]['count_preview']; 

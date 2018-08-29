@@ -6,16 +6,25 @@ body {
 	padding-bottom: 1px;
 	padding-top: 64px;
 }
+body p {
+	color: #fff;
+}
+button {
+	cursor: pointer;
+	padding: 0;
+}
 .gallery {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
-.gallery img{
+button.photo {
 	margin:5px;
+}
+.gallery img {
 	border:3px solid #fff;
 }
-a.photo:hover img{
+button.photo:hover img{
 	border:3px solid #034F80;
 }
 #main {
@@ -35,7 +44,16 @@ a:hover img {
 .image {
 	width: 800px;
 	margin:0 auto;
-}
-.image p {
 	color: #fff;
+}
+.feedback {
+	padding: 20px;
+}
+.goods {
+	color: #fff;
+}
+.auth {
+	color: #fff;
+	width:800px;
+	margin:20px auto;
 }

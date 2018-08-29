@@ -21,8 +21,8 @@
 	  $template = $twig->loadTemplate('image.tmpl');
 
 	  echo $template->render(array(
-	  	'image' => $objImage -> getImagesContent($id),
-	  	'countPreview' => $objImage -> countPreview($id)
+	  	'image' => $objImage -> getImages(),
+	  	'countPreview' => $objImage -> countPreview()
 	));
 	  
 	} catch (Exception $e) {

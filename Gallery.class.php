@@ -1,5 +1,5 @@
 <?php
-	class Gallery {
+	abstract class Gallery {
 		const HOST = 'localhost';
 		const USER = 'root';
 		const PASS = '';
@@ -38,5 +38,7 @@
 		    mysqli_close($db);
 			return $result;
 		}
+
+		abstract protected function getImages();
 	}
 ?>

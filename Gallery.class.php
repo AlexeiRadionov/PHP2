@@ -6,19 +6,19 @@
 		const DB = 'gallery';
 
 		public function getHOST() {
-			self::HOST;
+			return self::HOST;
 		}
 
 		public function getUSER() {
-			self::USER;
+			return self::USER;
 		}
 
 		public function getPASS() {
-			self::PASS;
+			return self::PASS;
 		}
 
 		public function getDB() {
-			self::DB;
+			return self::DB;
 		}
 
 		public function getAssocResult($sql) {

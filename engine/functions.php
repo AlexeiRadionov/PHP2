@@ -104,6 +104,14 @@ function prepareVariables($page_name, $action){
             $vars['price'] = $content["price"];
             $vars['countProduct'] = getCountProduct($id_session);
             break;
+        case 'catalog':
+            $countGoods = 5;
+            if ($action == '') {
+                $vars['catalog'] = showGoods($countGoods);
+            } else {
+                $vars['response'] = addShowGoods($action);
+            }
+            break;
         case 'login':
             $login = $_POST['login'];
             $pass = $_POST['pass'];
@@ -240,6 +248,13 @@ function getBasket($id_session) {
     return $basket;
 }
 
+function showGoods($countGoods) {
+    $sql = "SELECT `id_image`, `path_img`, `description`, `price` FROM `images` LIMIT $countGoods";
+    $catalog = getAssocResult($sql);
+    
+    return $catalog;
+}
+
 function addProduct($id, $id_session, &$response) {
     $sql = "SELECT * FROM `basket` WHERE id_session = '$id_session' AND id_product = " . $id;
     $result = getAssocResult($sql);
@@ -315,6 +330,28 @@ function doActionWithBasket($action){
             $id = (int)$_POST['id_basket'];
             removeProduct($id, $id_session, $response);
             break;
+    }
+    
+    return json_encode($response);
+}
+
+function addShowGoods($action){
+    $response = [
+        "result" => 0
+    ];
+
+    if ($action == 'addShowGoods') {
+        $countGoods = (int)$_POST['countGoods'];
+        $result = showGoods($countGoods);
+        $sql = "SELECT COUNT(*) FROM `images`";
+        $count = getAssocResult($sql);
+        if ($countGoods >= $count[0]['COUNT(*)']) {
+            $response['answer'] = 1;
+        }
+        $response['result'] = 1;
+        foreach ($result as $key => $value) {
+            $response["$key"] = $value;
+        }
     }
     
     return json_encode($response);

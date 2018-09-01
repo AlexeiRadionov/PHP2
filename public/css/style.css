@@ -33,6 +33,21 @@ button.photo:hover img{
 	background: #4A4A4A; 
 	color: #CCC;
 }
+#main a.catalog {
+	display: block;
+	color: #000;
+	text-decoration: none;
+	width: 250px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 20px;
+	background: #fff;
+	text-align: center;
+	line-height: 40px;
+}
+#main a.catalog:hover {
+	background: lightgray;
+}
 .post_title h2 {
 	font: normal 2em Arial,sans-serif;
 	margin: 0;

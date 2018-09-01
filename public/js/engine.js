@@ -51,7 +51,6 @@ $(document).ready(function(){
             dataType : "json",
             success: function(answer){
                 if(answer.result == 1) {
-                    console.log(answer);
                     addShowGoods(answer);
                 } else
                     alert("Что-то пошло не так...");
@@ -85,7 +84,6 @@ function addShowGoods(data) {
     }
     
     for(var good in data) {
-        //console.log(data[good]);
         str += '<div data-id="'+data[good].id_image+'"><img src="../../img/small/'+data[good].path_img+'"><p>"'+data[good].description+'"</p><p>Цена: "'+data[good].price+'" рублей за 1шт.</p><form action="/image/" method="GET" target="_blank"><input type="hidden" name="id" value="'+data[good].id_image+'"><button>Подробнее</button></form><hr></div>';
     }  
     $('.goods').html(str);

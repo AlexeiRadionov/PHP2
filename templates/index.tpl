@@ -13,7 +13,7 @@
 		<div class="gallery">
 			{{GALLERY}}
 		</div>
-		<a href="catalog/" target="_blank" class="catalog">Перейти к каталогу</a>
+		<a href="catalog/" class="catalog">Перейти к каталогу</a>
 		<div class="feedback">
 			<p>Оставьте свой отзыв</p>
 			<form>

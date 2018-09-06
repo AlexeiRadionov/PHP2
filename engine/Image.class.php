@@ -78,7 +78,10 @@
 				echo $template->render(array(
 				  	'image' => $this -> getImagesContent(),
 				  	'countPreview' => $this -> countPreview(),
-				  	'countProduct' => $this -> getCountProduct()
+				  	'countProduct' => $this -> getCountProduct(),
+				  	'auth' => Auth::$auth,
+				  	'back_url' => $_SERVER['REQUEST_URI'],
+				  	'user' => Auth::$auth
 				));
 			  
 			} catch (Exception $e) {

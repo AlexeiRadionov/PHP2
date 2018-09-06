@@ -93,7 +93,10 @@
 				echo $template->render(array(
 				  	'basket' => $this -> getBasket(),
 				  	'countProduct' => $this -> getCountProduct(),
-				  	'sum' => $this -> getSumProduct()
+				  	'sum' => $this -> getSumProduct(),
+				  	'auth' => Auth::$auth,
+				  	'back_url' => $_SERVER['REQUEST_URI'],
+				  	'user' => Auth::$auth
 				));
 			  
 			} catch (Exception $e) {

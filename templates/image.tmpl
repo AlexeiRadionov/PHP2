@@ -6,7 +6,11 @@
 </head>
 <body>
 	<div class="auth">
-		{{LOGIN}}
+		{% if auth == '' %}
+		{% include 'login_item.tmpl' %}
+		{% else %}
+		{% include 'logout_item.tmpl' %}
+		{% endif %}
 	</div>
 	<div class="image">
 		<img src="../img/big/{{image.path_img}}">

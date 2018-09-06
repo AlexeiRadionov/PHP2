@@ -25,7 +25,10 @@
 
 			  echo $template->render(array(
 			  	'images' => $this -> getImages(),
-			  	'feedback' => $this -> getFeedback()
+			  	'feedback' => $this -> getFeedback(),
+			  	'auth' => Auth::$auth,
+			  	'back_url' => $_SERVER['REQUEST_URI'],
+			  	'user' => Auth::$auth
 			  ));
 			  
 			} catch (Exception $e) {

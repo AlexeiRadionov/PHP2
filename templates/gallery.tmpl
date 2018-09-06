@@ -6,7 +6,11 @@
 </head>
 <body>
 	<div class="auth">
-		{{LOGIN}}
+		{% if auth == '' %}
+		{% include 'login_item.tmpl' %}
+		{% else %}
+		{% include 'logout_item.tmpl' %}
+		{% endif %}
 	</div>
 	<div id="main">
 		<div class="post_title"><h2>Моя галерея</h2></div>

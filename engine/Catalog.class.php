@@ -55,7 +55,10 @@
 			  $template = $twig->loadTemplate('catalog.tmpl');
 
 			  echo $template->render(array(
-			  	'catalog' => $this -> showGoods()
+			  	'catalog' => $this -> showGoods(),
+			  	'auth' => Auth::$auth,
+			  	'back_url' => $_SERVER['REQUEST_URI'],
+			  	'user' => Auth::$auth
 			  ));
 			  
 			} catch (Exception $e) {

@@ -20,8 +20,20 @@ if (!isset($_GET['id'])) {
 
 function prepareVariables($page_name, $action) {
 	$id_session = session_id();
+	$back = strip_tags($_GET['back']);
 	if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
+    }
+
+    $objAuth = new Auth();
+    
+    if ($objAuth -> alreadyLogin()) {
+    	$page_item = 'logout_item';
+    	$user = $_SESSION['login'];
+    	$objAuth -> setAuth($page_item, $user);
+    } else {
+    	$page_item = 'login_item';
+    	$objAuth -> setAuth($page_item);
     }
 
 	switch ($page_name) {
@@ -45,7 +57,7 @@ function prepareVariables($page_name, $action) {
         case 'login':
             $login = $_POST['login'];
             $pass = $_POST['pass'];
-            auth($login, $pass);
+            $objAuth -> getAuth($login, $pass);
             header("Location: {$back}");
             break;
         case 'logout':
@@ -66,3 +78,11 @@ function prepareVariables($page_name, $action) {
 }
 
 prepareVariables($page_name, $action);
+
+if (isset($_GET['send'])) {
+	$name = $_GET['userName'];
+	$feedback = $_GET['feedback'];
+	$date = date('Y.m.d H:i:s');
+	$objAddFeedback = new AddFeedback($name, $feedback, $date);
+	$objAddFeedback -> addFeedback();
+}

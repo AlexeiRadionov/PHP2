@@ -4,7 +4,7 @@ body {
 	font: normal 1.2em Verdana,Arial,sans-serif;
 	height: 100%;
 	padding-bottom: 1px;
-	padding-top: 64px;
+	padding-top: 30px;
 }
 body p {
 	color: #fff;
@@ -71,4 +71,35 @@ a:hover img {
 	color: #fff;
 	width:800px;
 	margin:20px auto;
+}
+.auth a {
+	color: red;
+}
+.registr {
+	display: flex;
+	justify-content: flex-end;
+	width:1100px;
+	margin:0 auto;
+}
+.registr a {
+	color: #fff;
+	margin: 0 10px;
+}
+form.registration {
+	width: 400px;
+}
+.registration p {
+	display: flex;
+}
+.registration input {
+	flex-grow: 1;
+}
+.registration label {
+	margin-right: 10px;
+}
+.account a {
+	color: red;
+}
+.account {
+	color: #fff;
 }

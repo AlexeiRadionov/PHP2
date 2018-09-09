@@ -2,12 +2,20 @@
 	class Auth extends Gallery {
 		public static $auth;
 
-		public function setAuth($page_item, $user = '') {
+		public function setAuth($user = '') {
 			self::$auth = $user;
 		}
 
 		public function alreadyLogin() {
-			return ($_SESSION["login"] == "admin" && $_SESSION["pass"] == "123"); 
+			$login = $_SESSION['login'];
+			$pass = $_SESSION['pass'];
+			$sql = "SELECT `login`, `password` FROM `users` WHERE `login` = '$login' AND `password` = '$pass'";
+			$result = $this -> getAssocResult($sql);
+			if ($result) {
+				return true;
+			} else {
+				return false;
+			} 
 		}
 
 		public function getAuth($login, $pass) {

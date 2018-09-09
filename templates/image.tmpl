@@ -5,6 +5,10 @@
 	<link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
+	<div class="registr">
+		<a href="/registration/?back={{back_url}}">Регистрация</a>
+		<a href="/account/?back={{back_url}}">Личный кабинет</a>
+	</div>
 	<div class="auth">
 		{% if auth == '' %}
 		{% include 'login_item.tmpl' %}

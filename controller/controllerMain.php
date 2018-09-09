@@ -21,12 +21,10 @@
 	    $objAuth = new Auth();
 	    
 	    if ($objAuth -> alreadyLogin()) {
-	    	$page_item = 'logout_item';
 	    	$user = $_SESSION['login'];
-	    	$objAuth -> setAuth($page_item, $user);
+	    	$objAuth -> setAuth($user);
 	    } else {
-	    	$page_item = 'login_item';
-	    	$objAuth -> setAuth($page_item);
+	    	$objAuth -> setAuth();
 	    }
 
 		switch ($page_name) {
@@ -67,6 +65,25 @@
 	            	echo $objBasket -> doActionWithBasket();
 	            }
 	            break;
+	        case 'registration':
+	        	$objRegistration = new Registration();
+	        	if (isset($_POST['sendForm'])) {
+	        		$login = $_POST['login'];
+	        		$pass = $_POST['pass'];
+	        		$email = $_POST['email'];
+	        		if ($objRegistration -> addUser($login, $pass, $email)) {
+	        			$objRegistration -> template();
+	        		} else {
+	        			header("Location: {$back}");
+	        		}
+	        	} else {
+	        		$objRegistration -> template();
+	        	}
+	        	break;
+	        case 'account':
+	        	$objAccount = new Account($back);
+	        	$objAccount -> template();
+	        	break;
 	    }
 	}
 ?>

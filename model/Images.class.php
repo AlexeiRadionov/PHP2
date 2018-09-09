@@ -1,13 +1,13 @@
 <?php
 	class Images extends Gallery {
 		public function getImages() {
-			$sql = "SELECT id, path_img FROM images WHERE 1 ORDER BY count_preview DESC";
+			$sql = "SELECT id_image, path_img FROM images WHERE 1 ORDER BY count_preview DESC";
 		    $images = $this -> getAssocResult($sql);
 		    return $images;
 		}
 
 		public function getFeedback() {
-			$sql = "SELECT `name`, `text_fb`, `date` FROM feedback WHERE 1 ORDER BY `id` DESC";
+			$sql = "SELECT `name`, `text_fb`, `date` FROM feedback WHERE 1 ORDER BY `id_feedback` DESC";
 		    $feedback = $this -> getAssocResult($sql);
 		    return $feedback;
 		}

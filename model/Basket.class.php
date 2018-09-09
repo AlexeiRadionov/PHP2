@@ -61,13 +61,13 @@
 		}
 
 		function removeProduct($id, $id_session, &$response) {
-		    $sql = "SELECT `id`, `id_product`, `quantity` FROM `basket` WHERE id_session = '$id_session' AND id_product = " . $id;
+		    $sql = "SELECT `id_basket`, `id_product`, `quantity` FROM `basket` WHERE id_session = '$id_session' AND id_product = " . $id;
 		    $result = $this -> getAssocResult($sql);
 
 		    if ($result[0]['quantity'] > 1) {
-		        $sql = "UPDATE `basket` SET `quantity` = `quantity` - 1 WHERE id = " . $result[0]['id'];
+		        $sql = "UPDATE `basket` SET `quantity` = `quantity` - 1 WHERE id_basket = " . $result[0]['id_basket'];
 		    } else {
-		        $sql = "DELETE FROM `basket` WHERE id = " . $result[0]['id'];
+		        $sql = "DELETE FROM `basket` WHERE id_basket = " . $result[0]['id_basket'];
 		    }
 		    
 		    if($this -> executeQuery($sql)) {

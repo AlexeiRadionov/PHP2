@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Orders</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<div class="account">
+		{% if auth == '' %}
+		{% include 'login_item.tmpl' %}
+		<p>Для оформления заказа необходимо войти в систему</p>
+		{% else %}
+		<p>Заказ успешно оформлен. Информацию о ваших заказах вы можете просмотреть в личном кабинете.</p>
+		{% endif %}
+	</div>
+</body>
+</html>

@@ -12,6 +12,7 @@
 	}
 
 	function prepareVariables($page_name, $action) {
+		$date = date('Y.m.d H:i:s');
 		$id_session = session_id();
 		$back = strip_tags($_GET['back']);
 		if (isset($_GET['id'])) {
@@ -83,6 +84,13 @@
 	        case 'account':
 	        	$objAccount = new Account($back);
 	        	$objAccount -> template();
+	        	break;
+	        case 'orders':
+	        	$objOrders = new Orders($id, $id_session, $action);
+	        	$objOrders -> template();
+	        	if ($user) {
+	        		$objOrders -> addOrder($id_session, $user, $date);
+	        	}
 	        	break;
 	    }
 	}

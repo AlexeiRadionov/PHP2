@@ -15,5 +15,12 @@
 
 			return $result;
 		}
+
+		public function lastInsertId() {
+			$objDataBase = DataBase::getInstance();
+			$result = $objDataBase -> getDb() -> lastInsertId();
+
+			return $result;
+		}
 	}
 ?>

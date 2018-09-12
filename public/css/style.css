@@ -3,8 +3,7 @@ body {
 	color: #444;
 	font: normal 1.2em Verdana,Arial,sans-serif;
 	height: 100%;
-	padding-bottom: 1px;
-	padding-top: 30px;
+	padding: 20px;
 }
 body p {
 	color: #fff;
@@ -102,4 +101,12 @@ form.registration {
 }
 .account {
 	color: #fff;
+}
+.orders {
+	border: 1px solid #fff;
+	padding: 20px;
+}
+.count, .amount, .status {
+	text-align: right;
+	margin-right: 20px;
 }

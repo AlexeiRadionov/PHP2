@@ -120,14 +120,14 @@
 		        	}
 		        	break;
 		        case 'account':
-		        	$objAccount = new Account($back);
+		        	$objAccount = new Account($back, $this -> user);
 		        	$objAccount -> template();
 		        	break;
 		        case 'orders':
-		        	$objOrders = new Orders($this -> id, $this -> id_session, $this -> action);
-		        	$objOrders -> template();
+		        	$objAddOrders = new AddOrders($this -> id, $this -> id_session, $this -> action);
+		        	$objAddOrders -> template();
 		        	if ($this -> user) {
-		        		$objOrders -> addOrder($this -> id_session, $this -> user, $this -> date);
+		        		$objAddOrders -> addOrder($this -> id_session, $this -> user, $this -> date);
 		        	}
 		        	break;
 		    }

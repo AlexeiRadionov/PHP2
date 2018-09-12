@@ -8,6 +8,10 @@
 		private static $instance;
 		private $db;
 
+		public function getDb() {
+			return $this -> db;
+		}
+
 		public static function getInstance(){
 			if(self::$instance == null){
 				self::$instance = new self();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 10 2018 г., 10:46
+-- Время создания: Сен 12 2018 г., 22:31
 -- Версия сервера: 5.7.20
 -- Версия PHP: 5.6.32
 
@@ -35,16 +35,6 @@ CREATE TABLE `basket` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `basket`
---
-
-INSERT INTO `basket` (`id_basket`, `id_session`, `id_product`, `quantity`) VALUES
-(3, 'cpq9o34gk5arqa2rbhqdbdkak2', 1, 1),
-(5, 'uje29qu4nclk1ggprm332fe6r0', 3, 1),
-(16, 'l355b20eli2iv041m9uvcfu041', 2, 1),
-(17, 'l355b20eli2iv041m9uvcfu041', 5, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -65,8 +55,7 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`id_feedback`, `name`, `text_fb`, `date`) VALUES
 (1, 'Вася', 'Отзыв 1', '2018-07-08 21:18:00'),
 (2, 'Иван', 'Отзыв 2', '2018-07-08 21:18:35'),
-(3, 'Алексей', 'Отзыв 3', '2018-07-08 21:22:14'),
-(4, 'Степан', 'Отзыв 4', '2018-09-09 20:08:02');
+(3, 'Алексей', 'Отзыв 3', '2018-09-12 08:32:32');
 
 -- --------------------------------------------------------
 
@@ -87,21 +76,21 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id_image`, `path_img`, `count_preview`, `description`, `price`) VALUES
-(1, '01.jpg', 2, 'Описание товара 1', '50000.00'),
-(2, '02.jpg', 4, 'Описание товара 2', '75000.00'),
-(3, '03.jpg', 1, 'Описание товара 3', '199000.90'),
-(4, '04.jpg', 4, 'Описание товара 4', '999.99'),
-(5, '05.jpg', 9, 'Описание товара 5', '1000.01'),
-(6, '06.jpg', 0, 'Описание товара 6', '1000000.00'),
-(7, '07.jpg', 2, 'Описание товара 7', '150000.00'),
-(8, '08.jpg', 0, 'Описание товара 8', '10000000.00'),
-(9, '09.jpg', 1, 'Описание товара 9', '35000.00'),
-(10, '10.jpg', 0, 'Описание товара 10', '99999.99'),
+(1, '01.jpg', 6, 'Описание товара 1', '50000.00'),
+(2, '02.jpg', 6, 'Описание товара 2', '75000.00'),
+(3, '03.jpg', 3, 'Описание товара 3', '199000.90'),
+(4, '04.jpg', 5, 'Описание товара 4', '999.99'),
+(5, '05.jpg', 14, 'Описание товара 5', '1000.01'),
+(6, '06.jpg', 1, 'Описание товара 6', '1000000.00'),
+(7, '07.jpg', 4, 'Описание товара 7', '150000.00'),
+(8, '08.jpg', 3, 'Описание товара 8', '10000000.00'),
+(9, '09.jpg', 3, 'Описание товара 9', '35000.00'),
+(10, '10.jpg', 6, 'Описание товара 10', '99999.99'),
 (11, '11.jpg', 0, 'Описание товара 11', '350500.00'),
-(12, '12.jpg', 1, 'Описание товара 12', '7800.00'),
-(13, '13.jpg', 0, 'Описание товара 13', '4000000.00'),
+(12, '12.jpg', 4, 'Описание товара 12', '7800.00'),
+(13, '13.jpg', 1, 'Описание товара 13', '4000000.00'),
 (14, '14.jpg', 0, 'Описание товара 14', '140900.00'),
-(15, '15.jpg', 0, 'Описание товара 15', '55700.00');
+(15, '15.jpg', 5, 'Описание товара 15', '55700.00');
 
 -- --------------------------------------------------------
 
@@ -124,8 +113,38 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id_order`, `id_session`, `id_user`, `status`, `count`, `amount`, `date`) VALUES
-(1, 'l355b20eli2iv041m9uvcfu041', 2, 'В обработке', 3, '335000.00', '2018-09-10 10:37:25'),
-(2, 'l355b20eli2iv041m9uvcfu041', 3, 'В обработке', 2, '76000.01', '2018-09-10 10:41:50');
+(8, 'j943hr9jiqgjoaarie0v9jadt6', 2, 'В обработке', 3, '77000.02', '2018-09-12 16:02:01'),
+(9, 'j943hr9jiqgjoaarie0v9jadt6', 2, 'В обработке', 1, '7800.00', '2018-09-12 16:03:27'),
+(10, 'j943hr9jiqgjoaarie0v9jadt6', 3, 'В обработке', 1, '55700.00', '2018-09-12 16:08:31'),
+(11, 'j943hr9jiqgjoaarie0v9jadt6', 3, 'В обработке', 2, '8000000.00', '2018-09-12 16:10:25'),
+(12, 'j943hr9jiqgjoaarie0v9jadt6', 3, 'В обработке', 4, '290699.98', '2018-09-12 22:27:23');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `products_in_order`
+--
+
+CREATE TABLE `products_in_order` (
+  `id_products_in_order` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `products_in_order`
+--
+
+INSERT INTO `products_in_order` (`id_products_in_order`, `id_order`, `id_product`, `quantity`) VALUES
+(11, 8, 5, 2),
+(12, 8, 2, 1),
+(13, 9, 12, 1),
+(14, 10, 15, 1),
+(15, 11, 13, 2),
+(16, 12, 10, 2),
+(17, 12, 15, 1),
+(18, 12, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +167,8 @@ INSERT INTO `users` (`id_user`, `login`, `password`, `email`) VALUES
 (1, 'admin', '123', ''),
 (2, 'user1', 'pass1', 'email1'),
 (3, 'user2', 'pass2', 'email2'),
-(4, 'user3', 'pass3', 'email3');
+(4, 'user3', 'pass3', 'email3'),
+(5, 'user4', 'pass4', 'email4');
 
 --
 -- Индексы сохранённых таблиц
@@ -179,6 +199,12 @@ ALTER TABLE `orders`
   ADD PRIMARY KEY (`id_order`);
 
 --
+-- Индексы таблицы `products_in_order`
+--
+ALTER TABLE `products_in_order`
+  ADD PRIMARY KEY (`id_products_in_order`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -192,13 +218,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id_basket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_basket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `images`
@@ -210,13 +236,19 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `products_in_order`
+--
+ALTER TABLE `products_in_order`
+  MODIFY `id_products_in_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

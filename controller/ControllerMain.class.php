@@ -43,7 +43,7 @@
 			$this -> id_session = session_id();
 			$this -> back = strip_tags($_GET['back']);
 			if (isset($_GET['id'])) {
-		        $this -> id = (int)$_GET['id'];
+		        $this -> id = (int)strip_tags($_GET['id']);
 		    }
 		}
 
@@ -88,7 +88,11 @@
 		            $login = $_POST['login'];
 		            $pass = $_POST['pass'];
 		            $objAuth -> getAuth($login, $pass);
-		            header("Location: {$back}");
+		            if ($_SESSION['login'] == 'admin') {
+		    			header("Location: /admin/?back={$back}");
+		    		} else {
+		    			header("Location: {$back}");
+		    		}
 		            break;
 		        case 'logout':
 		            $_SESSION['login'] = null;
@@ -128,6 +132,15 @@
 		        	$objAddOrders -> template();
 		        	if ($this -> user) {
 		        		$objAddOrders -> addOrder($this -> id_session, $this -> user, $this -> date);
+		        	}
+		        	break;
+		        case 'admin':
+		        	if ($this -> action == 'changeStatus') {
+			        	$objAdmin = new Admin($back);
+		        		echo $objAdmin -> changeStatus();
+			        } else {
+		        		$objAdmin = new Admin($back, $this -> id, $this -> action);
+			        	$objAdmin -> template();
 		        	}
 		        	break;
 		    }

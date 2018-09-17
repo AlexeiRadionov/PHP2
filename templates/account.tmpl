@@ -8,18 +8,19 @@
 <body>
 	<div class="account">
 		{% if auth == '' %}
-		{% include 'login_item.tmpl' %}
-		<p>Необходимо войти в систему</p>
+			{% include 'login_item.tmpl' %}
+			<p>Необходимо войти в систему</p>
 		{% else %}
-		{% include 'account_item.tmpl' %}
-		<p>Ваши заказы:</p>
-		<div class="orders">
-			{% if goods == 'Пока у вас нет ни одного заказа' %}
-			<p>{{goods}}</p>
-			{% else %}
-			{% include 'account_item_orders.tmpl' %}
-			{% endif %}
-		</div>
+			{% include 'account_item.tmpl' %}
+			<p>Ваши заказы:</p>
+			
+			<div class="orders">
+				{% if goods == 'Пока у вас нет ни одного заказа' %}
+					<p>{{goods}}</p>
+				{% else %}
+					{% include 'account_item_orders.tmpl' %}
+				{% endif %}
+			</div>
 		{% endif %}
 	</div>
 </body>

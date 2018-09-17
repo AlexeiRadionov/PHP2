@@ -9,13 +9,15 @@
 		<a href="/registration/?back={{back_url}}">Регистрация</a>
 		<a href="/account/?back={{back_url}}">Личный кабинет</a>
 	</div>
+	
 	<div class="auth">
 		{% if auth == '' %}
-		{% include 'login_item.tmpl' %}
+			{% include 'login_item.tmpl' %}
 		{% else %}
-		{% include 'logout_item.tmpl' %}
+			{% include 'logout_item.tmpl' %}
 		{% endif %}
 	</div>
+	
 	<div class="image">
 		<img src="../img/big/{{image.path_img}}">
 		<p>Просмотров: {{countPreview}}</p>

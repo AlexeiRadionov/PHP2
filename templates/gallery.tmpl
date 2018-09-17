@@ -9,19 +9,24 @@
 		<a href="/registration/?back={{back_url}}">Регистрация</a>
 		<a href="/account/?back={{back_url}}">Личный кабинет</a>
 	</div>
+	
 	<div class="auth">
 		{% if auth == '' %}
-		{% include 'login_item.tmpl' %}
+			{% include 'login_item.tmpl' %}
 		{% else %}
-		{% include 'logout_item.tmpl' %}
+			{% include 'logout_item.tmpl' %}
 		{% endif %}
 	</div>
+	
 	<div id="main">
 		<div class="post_title"><h2>Моя галерея</h2></div>
+		
 		<div class="gallery">
 			{% include 'gallery_item.tmpl' %}
 		</div>
+		
 		<a href="catalog/" class="catalog">Перейти к каталогу</a>
+		
 		<div class="feedback">
 			<p>Оставьте свой отзыв</p>
 			<form>

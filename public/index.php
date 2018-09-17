@@ -19,7 +19,7 @@ else
 	$page_name = $url_array[1];
 
 $action = '';
-if (!isset($_GET['id'])) {
+if ($url_array[2] != "") {
 	$action = $url_array[2];
 }
 

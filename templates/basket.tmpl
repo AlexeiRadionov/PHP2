@@ -11,22 +11,23 @@
 	</div>
 	<div class="auth">
 		{% if auth == '' %}
-		{% include 'login_item.tmpl' %}
+			{% include 'login_item.tmpl' %}
 		{% else %}
-		{% include 'logout_item.tmpl' %}
+			{% include 'logout_item.tmpl' %}
 		{% endif %}
 	</div>
 	<div class="goods">
 		{% if basket == 'Ваша корзина пуста' %}
-		<p>{{basket}}</p>
+			<p>{{basket}}</p>
 		{% else %}
-		{% include 'basket_item.tmpl' %}
+			{% include 'basket_item.tmpl' %}
 		{% endif %}
+		
 		<p id="count">Всего товаров в корзине: {{countProduct}}</p>
 		<p id="sum">Общая сумма покупки: {{sum}}</p>
 	</div>
 	{% if basket != 'Ваша корзина пуста' %}
-	<a id="orders" target="_blank" href="/orders/"><button>Оформить заказ</button></a>
+		<a id="orders" target="_blank" href="/orders/"><button>Оформить заказ</button></a>
 	{% endif %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

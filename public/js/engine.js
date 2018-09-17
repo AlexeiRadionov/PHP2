@@ -1,5 +1,21 @@
 $(document).ready(function(){
     var countGoods = 5;
+    var status = 'В обработке';
+    var orders = [];
+    
+    $('.select').on('change', function() {
+        status = this.value;
+    });
+
+    $('.checkbox').on('change', function() {
+        var order = $(this).attr("data-id");
+        if (orders.indexOf(order) == -1) {
+            orders.push(order);
+        } else {
+            orders.splice(orders.indexOf(order), 1);
+        }
+    });
+
     $('.buy').on('click', function(){
         var id_good = $(this).attr("id");
         $.ajax({
@@ -58,6 +74,26 @@ $(document).ready(function(){
             error: function() {alert("Ошибка");}
         })
     });
+
+    $('.changeStatus').on('click', function(){
+        $.ajax({
+            url: "/admin/changeStatus/",
+            type: "POST",
+            data:{
+                status: status,
+                orders: orders               
+            },
+            dataType : "json",
+            success: function(answer){
+                if(answer.result == 1) {
+                    orders = [];
+                    changeStatus(answer);
+                } else
+                    alert("Что-то пошло не так...");
+            },
+            error: function() {alert("Ошибка");}
+        })
+    });
 });
 
 function addProduct(data) { 
@@ -97,4 +133,12 @@ function addShowGoods(data) {
         '</form><hr></div>';
     }  
     $('.goods').html(str);
+}
+
+function changeStatus(data) {
+    delete data.result;
+    for(var order in data) {
+        $(".status" + data[order].id_order).text(data[order].status);
+        $(".checkbox").removeAttr('checked');
+    }
 }

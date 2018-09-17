@@ -26,7 +26,7 @@
 			$login = $this -> getAssocResult($sql);
 			$id_user = $login[0]['id_user'];
 
-		    $sql = "SELECT * FROM `products_in_order`, `images`, `orders` WHERE orders.id_order = products_in_order.id_order AND `id_product` = `id_image` AND `id_user` = '$id_user' ORDER BY orders.id_order DESC";
+		    $sql = "SELECT * FROM `products_in_order`, `images`, `orders` WHERE orders.id_order = products_in_order.id_order AND `id_product` = `id_image` AND `id_user` = '$id_user'";
 		    $goods = $this -> getAssocResult($sql);
 		    if (empty($goods)) {
 		        $goods = 'Пока у вас нет ни одного заказа';
@@ -41,7 +41,7 @@
 			$login = $this -> getAssocResult($sql);
 			$id_user = $login[0]['id_user'];
 
-			$sql = "SELECT DISTINCT `id_order`, `status`, `count`, `amount` FROM `orders` WHERE `id_user` = '$id_user' ORDER BY `id_order` DESC";
+			$sql = "SELECT `id_order`, `status`, `count`, `amount` FROM `orders` WHERE `id_user` = '$id_user' ORDER BY `id_order` DESC";
 			$infoOrders = $this -> getAssocResult($sql);
 
 			return $infoOrders;

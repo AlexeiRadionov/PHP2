@@ -15,13 +15,18 @@
 			{% include 'admin_item_orderInfo.tmpl' %}
 		{% elseif action == 'goods' %}
 			<nav>
-				<a href="/admin/?back={{back}}">Заказы</a>
+				<a href="/admin/">Заказы</a>
 				<span>Товары</span>
 			</nav>
+			<div class="table_goods">
+				{% include 'admin_item_tableGoods.tmpl' %}
+			</div>
+		{% elseif action == 'good' %}
+			{% include 'admin_item_goodInfo.tmpl' %}
 		{% else %}
 			<nav>
 				<span>Заказы</span>
-				<a href="goods/?back={{back}}">Товары</a>
+				<a href="goods/">Товары</a>
 			</nav>
 			<div class="table_orders">
 				{% include 'admin_item_tableOrders.tmpl' %}

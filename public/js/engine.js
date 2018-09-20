@@ -27,8 +27,8 @@ $(document).ready(function(){
             dataType : "json",
             success: function(answer){
                 if(answer.result == 1) {
-                    alert("Товар добавлен в корзину!");
                     addProduct(answer);
+                    alert("Товар добавлен в корзину!");
                 } else
                     alert("Что-то пошло не так...");
             },
@@ -47,8 +47,8 @@ $(document).ready(function(){
             error: function() {alert("Ошибка");},
             success: function(answer){
                 if(answer.result == 1) {
-                    alert("Товар удалён из корзины!");
                     removeProduct(answer);
+                    alert("Товар удалён из корзины!");
                 } else
                     alert("Что-то пошло не так...");
             },
@@ -86,8 +86,62 @@ $(document).ready(function(){
             dataType : "json",
             success: function(answer){
                 if(answer.result == 1) {
+                    console.log(answer);
                     orders = [];
                     changeStatus(answer);
+                } else
+                    alert("Что-то пошло не так...");
+            },
+            error: function() {alert("Ошибка");}
+        })
+    });
+
+    $('.addGood').on('click', function(){
+        var path_img = $('#path').val();
+        var description = $('#description').val();
+        var count_preview = $('#count_preview').val();
+        var price = $('#price').val();
+
+        $.ajax({
+            url: "/admin/addGood/",
+            type: "POST",
+            data:{
+                path_img: path_img,
+                description: description,
+                count_preview: count_preview,
+                price: price               
+            },
+            dataType : "json",
+            success: function(answer){
+                if(answer.result == 1) {
+                    addGood(answer);
+                    alert('Товар успешно добавлен в базу данных!');
+                } else
+                    alert("Что-то пошло не так...");
+            },
+            error: function() {alert("Ошибка");}
+        })
+    });
+
+    $('.edit').on('click', function(){
+        var id_good = $('.good').attr('data-id');
+        var description = $('#description').val();
+        var price = $('#price').val();
+
+        $.ajax({
+            url: "/admin/edit/",
+            type: "POST",
+            data:{
+                description: description,
+                id_good: id_good,
+                price: price               
+            },
+            dataType : "json",
+            success: function(answer){
+                if(answer.result == 1) {
+                    console.log(answer);
+                    editGood(answer);
+                    alert('Информация о товаре успешно обновлена!');
                 } else
                     alert("Что-то пошло не так...");
             },
@@ -141,4 +195,28 @@ function changeStatus(data) {
         $(".status" + data[order].id_order).text(data[order].status);
         $(".checkbox").removeAttr('checked');
     }
+}
+
+function addGood(data) {
+    delete data.result;
+    $('.goodInfo').val('');
+
+    var row = 
+    '<tr>' +
+        '<td><a href="/admin/good/?id=' + data.id_image + '&back=' + data.back + '" title="Редактировать">' + data.id_image + '</a></td>' + 
+        '<td>' + data.path_img + '</td>' + 
+        '<td>' + data.count_preview + '</td>' + 
+        '<td>' + data.description + '</td>' + 
+        '<td>' + data.price + '</td>' + 
+    '</tr>';
+
+    $('.goods').append(row);
+}
+
+function editGood(data) {
+    delete data.result;
+    $('.goodInfo').val('');
+
+    $('.description').text(data.description);
+    $('.price').text(data.price);
 }

@@ -89,7 +89,7 @@
 		            $pass = $_POST['pass'];
 		            $objAuth -> getAuth($login, $pass);
 		            if ($_SESSION['login'] == 'admin') {
-		    			header("Location: /admin/?back={$back}");
+		    			header("Location: /admin/");
 		    		} else {
 		    			header("Location: {$back}");
 		    		}
@@ -136,10 +136,16 @@
 		        	break;
 		        case 'admin':
 		        	if ($this -> action == 'changeStatus') {
-			        	$objAdmin = new Admin($back);
+			        	$objAdmin = new Admin();
 		        		echo $objAdmin -> changeStatus();
+		        	} else if ($this -> action == 'addGood') {
+			        	$objAdmin = new Admin();
+		        		echo $objAdmin -> addGood();
+		        	} else if ($this -> action == 'edit') {
+			        	$objAdmin = new Admin();
+		        		echo $objAdmin -> editGood();
 			        } else {
-		        		$objAdmin = new Admin($back, $this -> id, $this -> action);
+		        		$objAdmin = new Admin($this -> id, $this -> action);
 			        	$objAdmin -> template();
 		        	}
 		        	break;

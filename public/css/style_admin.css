@@ -35,6 +35,23 @@ tr {
 	height: 35px;
 }
 
+p {
+	margin: 15px 0;
+	display: flex;
+}
+
+p input {
+	flex-grow: 1;
+}
+
+label {
+	margin-right: 15px;
+}
+
+.form {
+	width: 440px;
+}
+
 .admin {
 	width: 1000px;
 	margin: 0 auto;

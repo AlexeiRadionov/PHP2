@@ -27,7 +27,8 @@
 		<p id="sum">Общая сумма покупки: {{sum}}</p>
 	</div>
 	{% if basket != 'Ваша корзина пуста' %}
-		<a id="orders" target="_blank" href="/orders/"><button>Оформить заказ</button></a>
+		<p>Для оформления заказа авторизуйтесь и нажмите:</p>
+		<a id="orders" href="/orders/"><button>Оформить заказ</button></a>
 	{% endif %}
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -164,7 +164,7 @@ function removeProduct(data) {
     $('#count').html('Всего товаров в корзине: ' + data.countProduct);
     $('#sum').html('Общая сумма покупки: ' + data.sum);
     if (data.sum == 0) {
-        $('#orders').attr('style', 'display:none');
+        window.location.reload();
     }
 }
 

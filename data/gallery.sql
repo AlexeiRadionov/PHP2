@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 03 2019 г., 23:11
+-- Время создания: Янв 03 2019 г., 23:43
 -- Версия сервера: 5.7.20-log
 -- Версия PHP: 5.6.32
 
@@ -214,8 +214,8 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products_in_order`
   ADD PRIMARY KEY (`id_products_in_order`),
-  ADD KEY `products_in_order_fk_orders` (`id_order`),
-  ADD KEY `products_in_order_fk_images` (`id_product`);
+  ADD KEY `products_in_order_fk_images` (`id_product`),
+  ADD KEY `products_in_order_fk_orders` (`id_order`);
 
 --
 -- Индексы таблицы `users`
@@ -283,7 +283,8 @@ ALTER TABLE `orders`
 -- Ограничения внешнего ключа таблицы `products_in_order`
 --
 ALTER TABLE `products_in_order`
-  ADD CONSTRAINT `products_in_order_fk_images` FOREIGN KEY (`id_product`) REFERENCES `images` (`id_image`);
+  ADD CONSTRAINT `products_in_order_fk_images` FOREIGN KEY (`id_product`) REFERENCES `images` (`id_image`),
+  ADD CONSTRAINT `products_in_order_fk_orders` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id_order`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

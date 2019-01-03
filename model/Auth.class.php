@@ -25,6 +25,11 @@
 			$_SESSION["pass"] = $pass; 
 		}
 
+		public function isAdmin($login, $pass) {
+			return ($login == 'admin' && $pass == '123');
+			
+		}
+
 		public function template() {
 			
 		}

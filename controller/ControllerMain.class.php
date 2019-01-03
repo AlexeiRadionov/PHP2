@@ -88,7 +88,7 @@
 		            $login = $_POST['login'];
 		            $pass = $_POST['pass'];
 		            $objAuth -> getAuth($login, $pass);
-		            if ($_SESSION['login'] == 'admin') {
+		            if ($objAuth -> isAdmin($login, $pass)) {
 		    			header("Location: /admin/");
 		    		} else {
 		    			header("Location: {$back}");
@@ -97,7 +97,8 @@
 		        case 'logout':
 		            $_SESSION['login'] = null;
 		            $_SESSION['pass'] = null;
-		            header("Location: {$back}");
+		            
+		            (!empty($back)) ? header("Location: {$back}") : header("Location: /");
 		            break;
 		        case 'basket':
 		            if ($this -> action == '') {
@@ -128,13 +129,21 @@
 		        	$objAccount -> template();
 		        	break;
 		        case 'orders':
-		        	$objAddOrders = new AddOrders($this -> id, $this -> id_session, $this -> action);
-		        	$objAddOrders -> template();
 		        	if ($this -> user) {
-		        		$objAddOrders -> addOrder($this -> id_session, $this -> user, $this -> date);
+		        		$objAddOrders = new AddOrders($this -> id, $this -> id_session, $this -> action);
+
+		        		if ($objAddOrders -> addOrder($this -> id_session, $this -> user, $this -> date)) {
+
+		        			header("Location: /account/");
+		        		}
+		        	} else {
+		        		header("Location: /basket/");
 		        	}
 		        	break;
 		        case 'admin':
+		        	if (!($objAuth -> isAdmin($_SESSION['login'], $_SESSION['pass']))) {
+		    			header("Location: /");
+		    		}
 		        	if ($this -> action == 'changeStatus') {
 			        	$objAdmin = new Admin();
 		        		echo $objAdmin -> changeStatus();

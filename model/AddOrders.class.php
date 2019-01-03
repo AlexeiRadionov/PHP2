@@ -21,28 +21,13 @@
 					$sql = "INSERT INTO `products_in_order`(`id_order`, `id_product`, `quantity`) VALUES ('$id_order', '$id_product', '$quantity')";
 					$this -> executeQuery($sql);	
 				}
+
+				return true;
 			}
 		}
 
 		public function template() {
-			include '../Twig/Autoloader.php';
-			Twig_Autoloader::register();
-
-			try {
-				$loader = new Twig_Loader_Filesystem('../templates');
-				  
-				$twig = new Twig_Environment($loader);
-				  
-				$template = $twig->loadTemplate('orders.tmpl');
-
-				echo $template->render(array(
-				  	'auth' => Auth::$auth,
-				  	'back_url' => $_SERVER['REQUEST_URI']
-				));
-			  
-			} catch (Exception $e) {
-			  die ('ERROR: ' . $e->getMessage());
-			}
+			
 		}
 	}
 ?>

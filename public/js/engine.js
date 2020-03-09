@@ -139,7 +139,6 @@ $(document).ready(function(){
             dataType : "json",
             success: function(answer){
                 if(answer.result == 1) {
-                    console.log(answer);
                     editGood(answer);
                     alert('Информация о товаре успешно обновлена!');
                 } else
@@ -203,7 +202,7 @@ function addGood(data) {
 
     var row = 
     '<tr>' +
-        '<td><a href="/admin/good/?id=' + data.id_image + '&back=' + data.back + '" title="Редактировать">' + data.id_image + '</a></td>' + 
+        '<td><a href="/admin/good/?id=' + data.id_image + '" title="Редактировать">' + data.id_image + '</a></td>' + 
         '<td>' + data.path_img + '</td>' + 
         '<td>' + data.count_preview + '</td>' + 
         '<td>' + data.description + '</td>' + 

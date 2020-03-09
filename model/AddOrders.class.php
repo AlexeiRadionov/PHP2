@@ -1,9 +1,7 @@
 <?php
 	class AddOrders extends Basket {
 		public function addOrder($id_session, $user, $date) {
-			$sql = "SELECT `id_user` FROM users WHERE `login` = '$user'";
-			$login = $this -> getAssocResult($sql);
-			$id_user = $login[0]['id_user'];
+			$id_user = $this -> getIdUser($user);
 			
 			$amount = $this -> getSumProduct();
 			$count = $this -> getCountProduct();

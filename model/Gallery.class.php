@@ -22,5 +22,13 @@
 
 			return $result;
 		}
+
+		public function getIdUser($user) {
+			$sql = "SELECT `id_user` FROM users WHERE `login` = '$user'";
+			$login = $this -> getAssocResult($sql);
+			$id_user = $login[0]['id_user'];
+
+			return $id_user;
+		}
 	}
 ?>

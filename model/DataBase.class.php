@@ -2,7 +2,7 @@
 	class DataBase {
 		const HOST = 'localhost';
 		const USER = 'root';
-		const PASS = '';
+		const PASS = 'root';
 		const DB = 'gallery';
 
 		private static $instance;
